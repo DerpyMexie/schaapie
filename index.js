@@ -42,8 +42,11 @@ bot.on("message", async message => {
       .addField("Joined this server at:", "01/14/2018");
       return message.channel.send(botembed);
     }
+});
 
-
+bot.on("guildMemberAdd", async member, guild => {
+  let memberrole = guild.roles.find("name", "Member")
+  member.addRole(memberrole).catch(console.error);
 });
 
 bot.login(botconfig.token);
